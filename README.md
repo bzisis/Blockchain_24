@@ -1,2 +1,2 @@
-# Blockchanin_24
+# Blockchain_24
 Main Github repositoty for commiting documented rust (sub-projects of reth) files.
