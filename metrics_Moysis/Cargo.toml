@@ -1,0 +1,30 @@
+// Moysis Moysis Volos, Greece 29/06/2024.
+
+[package]
+# These fields inherit values from the workspace configuration
+name = "reth-metrics"           # Package name
+version.workspace = true        # Inherits version from workspace
+edition.workspace = true        # Inherits Rust edition from workspace
+rust-version.workspace = true   # Inherits Rust version from workspace
+license.workspace = true        # Inherits license from workspace
+homepage.workspace = true       # Inherits homepage URL from workspace
+repository.workspace = true     # Inherits repository URL from workspace
+description = "reth metrics utilities"  # Description of the package
+
+[lints]
+workspace = true   # Inherit lints settings from the workspace
+
+[dependencies]
+# reth-related dependency, inherits version from workspace
+reth-metrics-derive.workspace = true
+
+# metrics-related dependency, inherits version from workspace
+metrics.workspace = true
+
+# Asynchronous programming dependencies, all optional
+tokio = { workspace = true, features = ["full"], optional = true }  # Tokio for async runtime, with full feature set
+futures = { workspace = true, optional = true }                     # Futures library for async programming
+tokio-util = { workspace = true, optional = true }                  # Tokio utility functions
+
+[features]
+common = ["tokio", "futures", "tokio-util"]  # Common feature set including all async dependencies

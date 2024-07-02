@@ -1,0 +1,33 @@
+// Moysis Moysis Volos, Greece 29/06/2024.
+
+[package]
+# The package metadata section, inheriting values from the workspace configuration
+name = "reth-metrics-derive"  # Package name
+version.workspace = true      # Inherits version from workspace
+edition.workspace = true      # Inherits Rust edition from workspace
+rust-version.workspace = true # Inherits Rust version from workspace
+license.workspace = true      # Inherits license from workspace
+homepage.workspace = true     # Inherits homepage URL from workspace
+repository.workspace = true   # Inherits repository URL from workspace
+
+[lints]
+# Lints configuration, inheriting settings from the workspace
+workspace = true
+
+[lib]
+# Library-specific settings
+proc-macro = true  # Indicates that this library is a procedural macro
+
+[dependencies]
+# Dependencies required for this package
+proc-macro2.workspace = true # Inherits version for proc-macro2 from workspace
+syn = { workspace = true, features = ["extra-traits"] } # Inherits version for syn and enables extra-traits feature
+quote.workspace = true       # Inherits version for quote from workspace
+regex = "1.6.0"              # Specific version for regex dependency
+once_cell.workspace = true   # Inherits version for once_cell from workspace
+
+[dev-dependencies]
+# Dependencies required for testing and development
+metrics.workspace = true     # Inherits version for metrics from workspace
+serial_test.workspace = true # Inherits version for serial_test from workspace
+trybuild = "1.0"             # Specific version for trybuild dependency
