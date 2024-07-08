@@ -1,0 +1,9 @@
+[package]
+name = "reth-optimism-primitives"  # The name of the package
+version.workspace = true           # Use workspace version for version management
+edition.workspace = true           # Use workspace edition for compatibility across crates
+rust-version.workspace = true      # Use workspace rust version configuration
+license.workspace = true           # Use workspace license configuration
+homepage.workspace = true          # Use workspace homepage configuration
+repository.workspace = true        # Use workspace repository configuration
+description = "OP primitive types"  # Description of the package

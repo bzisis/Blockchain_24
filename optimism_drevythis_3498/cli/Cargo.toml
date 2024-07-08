@@ -1,0 +1,57 @@
+# Package metadata
+[package]
+name = "reth-optimism-cli"  # Name of the package
+version.workspace = true  # Use the workspace's version
+edition.workspace = true  # Use the workspace's edition
+rust-version.workspace = true  # Use the workspace's Rust version
+license.workspace = true  # Use the workspace's license
+homepage.workspace = true  # Use the workspace's homepage URL
+repository.workspace = true  # Use the workspace's repository URL
+
+# Lints configuration
+[lints]
+workspace = true  # Apply lints across the entire workspace
+
+# Dependencies required for this package
+[dependencies]
+reth-static-file-types = { workspace = true, features = ["clap"] }  # Dependency for static file types with clap features enabled
+clap = { workspace = true, features = ["derive", "env"] }  # Command-line argument parser with derive and env features enabled
+reth-cli-commands.workspace = true  # CLI commands for reth
+reth-consensus.workspace = true  # Consensus algorithms and utilities for reth
+reth-db = { workspace = true, features = ["mdbx"] }  # Database layer with MDBX support
+reth-db-api.workspace = true  # API for database interactions
+reth-downloaders.workspace = true  # Downloaders for blockchain data
+reth-optimism-primitives.workspace = true  # Optimism-specific blockchain primitives
+reth-provider.workspace = true  # Blockchain data providers
+reth-prune.workspace = true  # Pruning utilities for blockchain data
+reth-stages.workspace = true  # Stages for blockchain processing pipelines
+reth-static-file.workspace = true  # Static file handling utilities
+reth-execution-types.workspace = true  # Types for execution results
+reth-node-core.workspace = true  # Core functionality for blockchain nodes
+reth-primitives.workspace = true  # Basic blockchain primitives
+
+reth-stages-types.workspace = true  # Types specific to stages in processing pipelines
+reth-node-events.workspace = true  # Event handling for blockchain nodes
+reth-network-p2p.workspace = true  # Peer-to-peer networking
+reth-errors.workspace = true  # Error handling utilities
+
+reth-config.workspace = true  # Configuration utilities
+alloy-primitives.workspace = true  # Alloy-specific blockchain primitives
+futures-util.workspace = true  # Utilities for asynchronous programming
+reth-evm-optimism.workspace = true  # Optimism-specific Ethereum Virtual Machine implementation
+
+tokio = { workspace = true, features = [
+    "sync",  # Synchronization primitives
+    "macros",  # Macros for async/await
+    "time",  # Time-related utilities
+    "rt-multi-thread",  # Multi-threaded runtime
+] }
+tracing.workspace = true  # Instrumentation for application-level tracing
+eyre.workspace = true  # Error handling and reporting library
+
+# Feature flags for conditional compilation
+[features] 
+optimism = [ 
+    "reth-primitives/optimism",  # Enable Optimism-specific primitives
+    "reth-evm-optimism/optimism",  # Enable Optimism-specific EVM features
+]

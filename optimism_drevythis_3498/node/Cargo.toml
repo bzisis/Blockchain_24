@@ -1,0 +1,82 @@
+[package]
+name = "reth-node-optimism"
+version.workspace = true  # Sets versioning across the workspace
+edition.workspace = true  # Ensures all crates use the same Rust edition
+rust-version.workspace = true  # Manages Rust version compatibility
+license.workspace = true  # Specifies license for the workspace
+homepage.workspace = true  # URL to the project's homepage
+repository.workspace = true  # URL to the project's repository
+
+[lints]
+workspace = true  # Enables linting across the entire workspace
+
+[dependencies]
+# reth crates
+reth-chainspec.workspace = true  # Chainspec definitions for reth
+reth-primitives.workspace = true  # Fundamental data types and utilities
+reth-payload-builder.workspace = true  # Payload builder for transactions
+reth-auto-seal-consensus.workspace = true  # Consensus algorithm for automatic sealing
+reth-basic-payload-builder.workspace = true  # Basic payload builder for transactions
+reth-consensus.workspace = true  # Consensus-related utilities
+reth-optimism-payload-builder.workspace = true  # Optimism-specific payload builder
+reth-rpc-types.workspace = true  # RPC types definitions
+reth-rpc.workspace = true  # RPC utilities
+reth-rpc-types-compat.workspace = true  # Compatibility layer for RPC types
+reth-node-api.workspace = true  # Node API interfaces
+reth-node-builder.workspace = true  # Builder utilities for node configuration
+reth-tracing.workspace = true  # Tracing utilities
+reth-provider.workspace = true  # Provider utilities
+reth-transaction-pool.workspace = true  # Transaction pool management
+reth-network.workspace = true  # Network-related utilities
+reth-evm.workspace = true  # EVM related utilities
+reth-revm.workspace = true  # REVM related utilities
+reth-evm-optimism.workspace = true  # Optimism-specific EVM utilities
+reth-beacon-consensus.workspace = true  # Beacon consensus utilities
+reth-optimism-consensus.workspace = true  # Optimism-specific consensus utilities
+revm-primitives.workspace = true  # Primitive data types for REVM
+reth-discv5.workspace = true  # Discovery v5 networking
+reth-rpc-eth-types.workspace = true  # RPC Ethereum types
+reth-rpc-eth-api.workspace = true  # RPC Ethereum API
+
+# async dependencies
+async-trait.workspace = true  # Async/await support
+reqwest = { workspace = true, features = ["rustls-tls-native-roots"] }  # HTTP client with TLS support
+tracing.workspace = true  # Distributed tracing
+
+# miscellaneous dependencies
+clap.workspace = true  # Command-line argument parsing
+serde.workspace = true  # Serialization framework
+eyre.workspace = true  # Error handling
+parking_lot.workspace = true  # Synchronization primitives
+thiserror.workspace = true  # Error trait for custom errors
+
+# RPC dependencies
+jsonrpsee.workspace = true  # JSON-RPC client and server
+jsonrpsee-types.workspace = true  # JSON-RPC types definitions
+serde_json.workspace = true  # JSON serialization
+
+[dev-dependencies]
+# Development dependencies
+reth.workspace = true  # Core reth library
+reth-db.workspace = true  # Database utilities for reth
+reth-revm = { workspace = true, features = ["test-utils"] }  # REVM utilities with test utilities
+reth-e2e-test-utils.workspace = true  # End-to-end testing utilities
+tokio.workspace = true  # Asynchronous runtime
+alloy-primitives.workspace = true  # Primitive data types for alloy
+alloy-genesis.workspace = true  # Genesis configuration for alloy
+
+[features]
+# Feature flags for Optimism-specific dependencies
+optimism = [
+    "reth-chainspec/optimism",
+    "reth-primitives/optimism",
+    "reth-provider/optimism",
+    "reth-rpc-types-compat/optimism",
+    "reth-rpc/optimism",
+    "reth-evm-optimism/optimism",
+    "reth-optimism-payload-builder/optimism",
+    "reth-beacon-consensus/optimism",
+    "reth-revm/optimism",
+    "reth-auto-seal-consensus/optimism",
+    "reth-rpc-eth-types/optimism",
+]

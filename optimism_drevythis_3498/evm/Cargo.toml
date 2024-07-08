@@ -1,0 +1,47 @@
+[package]
+name = "reth-evm-optimism"
+version = "0.1.0"
+edition = "2018"
+
+# Metadata fields (workspace-wide)
+license = "MIT"
+homepage = "https://example.com"
+repository = "https://github.com/example/reth-evm-optimism"
+
+[lints]
+workspace = true  # Enable workspace-wide linting
+
+[dependencies]
+# Dependencies from the Reth ecosystem
+reth-chainspec = { workspace = true }
+reth-ethereum-forks = { workspace = true }
+reth-evm = { workspace = true }
+reth-primitives = { workspace = true }
+reth-revm = { workspace = true }
+reth-execution-errors = { workspace = true }
+reth-execution-types = { workspace = true }
+reth-prune-types = { workspace = true }
+reth-consensus-common = { workspace = true }
+
+# Optimism-specific dependencies
+reth-optimism-consensus = { workspace = true }
+
+# revm and related dependencies
+revm = { workspace = true }
+revm-primitives = { workspace = true }
+
+# Miscellaneous dependencies
+thiserror = { workspace = true }
+tracing = { workspace = true }
+
+[dev-dependencies]
+reth-revm = { workspace = true, features = ["test-utils"] }
+
+[features]
+# Feature flags for Optimism-specific components
+optimism = [
+    "reth-primitives/optimism",
+    "reth-execution-types/optimism",
+    "reth-optimism-consensus/optimism",
+    "reth-revm/optimism",
+]
